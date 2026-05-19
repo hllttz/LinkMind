@@ -1,104 +1,112 @@
 # LinkMind
 
-> 自托管网页资料归档与 AI 知识库平台  
-> Self-hosted Bookmark, Web Archive and AI Knowledge Base Platform
+自托管网页资料归档与个人知识库平台。
 
-LinkMind 是一个面向学生、开发者和信息收集型用户的网页资料归档与稍后读平台。它可以帮助用户保存网页、提取正文、归档快照、管理标签与集合，并通过全文搜索和 AI 摘要把零散链接沉淀为可复用的个人知识库。
+LinkMind 是一个面向学生、开发者和长期信息收集用户的网页收藏、稍后读与资料归档系统。它可以保存网页链接，自动提取正文，归档网页快照，建立全文搜索，并通过人工智能能力辅助生成摘要、标签和知识卡片。
 
-本项目参考 Karakeep、Linkwarden 等自托管书签与网页归档项目的产品形态，并结合 Gin、GORM、Vue、gRPC 进行重新设计。
+一个用于长期沉淀技术文章、官方文档、论文资料、题解文章、项目链接和学习笔记的个人知识库。
 
----
+## 项目简介
 
-## 为什么做这个项目
+在日常学习和开发过程中，我们经常会遇到大量值得保存的网页资料，例如技术博客、官方文档、GitHub 项目、论文、教程、竞赛题解、学校通知和面试资料。
 
-浏览器收藏夹适合“保存链接”，但不适合长期管理知识资料。
-
-常见问题包括：
+普通收藏夹只能保存链接，但无法解决以下问题：
 
 - 收藏太多之后很难再次找到
-- 原网页可能删除、改版或失效
-- 无法对网页正文进行统一搜索
-- 无法为文章生成摘要、标签和知识卡片
-- 无法把博客、文档、论文、GitHub 仓库等资料系统化整理
+- 原网页可能删除、失效或改版
+- 网页正文无法统一搜索
+- 缺少标签、集合和阅读状态管理
+- 不能对内容自动总结和提炼重点
+- 无法把零散资料沉淀为长期知识库
 
-LinkMind 的目标是解决这些问题：
+LinkMind 的目标是把这些零散链接转化为可搜索、可归档、可阅读、可复盘的个人资料库。
 
-> 把互联网上零散的链接，沉淀成自己的可搜索、可归档、可阅读、可总结的知识库。
-
----
-
-## 功能特性
+## 核心功能
 
 ### 链接收藏
 
-- 保存网页链接
-- 自动抓取标题、描述、封面图
-- 自动提取正文内容
-- 支持星标、归档、阅读状态
-- 支持按照标签和集合管理
+用户可以保存任意网页链接。系统会自动抓取网页标题、描述、封面信息和正文内容，并保存到个人收藏库中。
+
+支持的资料类型包括：
+
+- 技术文章
+- 官方文档
+- GitHub 仓库
+- 论文和 PDF
+- 竞赛题解
+- 学校通知
+- 面试资料
+- 工具教程
+- 新闻文章
 
 ### 网页归档
 
-- 保存原始网页 HTML
-- 保存清洗后的正文内容
-- 支持网页快照
-- 支持历史版本记录
-- 防止链接失效后资料丢失
+系统支持保存网页快照，降低链接失效、页面删除或内容改版带来的资料丢失风险。
+
+计划支持的归档内容包括：
+
+- 原始网页内容
+- 清洗后的正文
+- 页面截图
+- PDF 快照
+- 历史版本记录
 
 ### 稍后读
 
-- Reader View 阅读模式
-- 正文清洗展示
-- 阅读状态记录
-- 高亮文本
+系统提供适合阅读的正文展示页面，用于集中阅读已保存的网页资料。
+
+计划支持：
+
+- 阅读状态
+- 星标收藏
+- 正文阅读
+- 高亮标注
 - 阅读笔记
 - 来源链接回溯
 
+### 标签与集合
+
+用户可以通过标签和集合组织资料。
+
+标签适合描述内容属性，例如 Go、Vue、数据库、网络安全、论文、面试等。
+
+集合适合组织主题资料，例如 Go 后端学习、Vue 项目实战、论文阅读、面试准备、日本大学院资料等。
+
 ### 全文搜索
 
-- 搜索标题
-- 搜索正文
-- 搜索标签
-- 搜索集合
-- 搜索笔记
-- 搜索 AI 摘要
+系统会为收藏内容建立全文索引，支持快速搜索标题、正文、标签、集合、笔记和摘要。
 
-### AI 整理
+全文搜索用于解决“收藏了但找不到”的问题。
+
+### 人工智能整理
+
+系统可以调用大模型对网页内容进行辅助整理。
+
+计划支持：
 
 - 自动摘要
 - 自动生成标签
-- 自动识别内容类型
 - 提取关键知识点
 - 生成知识卡片
-- 后续支持相似内容推荐与知识库问答
+- 相似资料推荐
+- 后续扩展知识库问答
+
+人工智能生成的内容只作为辅助结果，用户可以自行修改和确认。
 
 ### 网页变化监控
 
-- 定时重新抓取网页
-- 对比内容 hash
-- 检测标题、正文、关键词变化
-- 生成变化记录
-- 站内通知提醒
+对于重要页面，系统可以定期检查内容变化。
 
----
+适合监控：
 
-## 适用场景
-
-LinkMind 适合保存和整理：
-
-- 技术博客
-- GitHub 仓库
-- 官方文档
-- CTF 题解
-- 论文 / PDF
 - 学校通知
 - 考试公告
-- 面试资料
-- 视频教程
-- 工具文档
-- 新闻文章
+- 竞赛公告
+- 官方文档更新
+- GitHub 发布页面
+- 招聘岗位页面
 
----
+该功能适合作为后续扩展，不放入第一版核心目标。
 
 ## 技术栈
 
@@ -109,9 +117,7 @@ LinkMind 适合保存和整理：
 - TypeScript
 - Pinia
 - Vue Router
-- Naive UI / Element Plus
-- Axios
-- SSE / WebSocket
+- Naive UI 或 Element Plus
 
 ### 后端
 
@@ -121,11 +127,10 @@ LinkMind 适合保存和整理：
 - gRPC
 - Protobuf
 - JWT
-- Zap / Logrus
 
 ### 基础设施
 
-- MySQL / PostgreSQL
+- MySQL 或 PostgreSQL
 - Redis
 - Meilisearch
 - MinIO
@@ -135,263 +140,60 @@ LinkMind 适合保存和整理：
 
 - goquery
 - readability
-- chromedp / Playwright
-- OCR，可选
-- PDF parser，可选
+- chromedp 或 Playwright
+- PDF 解析，后续扩展
+- OCR 识别，后续扩展
 
-### AI 能力
+### 人工智能
 
 - DeepSeek API
-- OpenAI Compatible API
-- Ollama，本地模型可选
-
----
+- OpenAI 兼容接口
+- Ollama 本地模型，后续扩展
 
 ## 系统架构
 
+LinkMind 采用前后端分离架构。前端负责用户界面和交互，后端使用 Gin 提供统一接口，内部通过 gRPC 拆分网页抓取、归档、搜索和人工智能处理等能力。
+
 ```text
-Vue Web
+Vue 前端
   |
   | HTTP / SSE
   v
-Gin API Gateway
+Gin API 网关
   |
   | gRPC
   v
-Internal Services
-  ├── BookmarkService
-  ├── CrawlService
-  ├── ArchiveService
-  ├── SearchService
-  ├── AIService
-  ├── WatchService
-  └── NotifyService
+内部服务
+  ├── 收藏服务
+  ├── 抓取服务
+  ├── 归档服务
+  ├── 搜索服务
+  ├── 人工智能服务
+  └── 监控服务
   |
   v
-Storage
-  ├── MySQL / PostgreSQL
-  ├── Redis
-  ├── Meilisearch
-  └── MinIO
+MySQL / Redis / Meilisearch / MinIO
 ```
-
----
-
-## 核心模块
-
-### API Gateway
-
-基于 Gin 实现，对前端提供统一 HTTP API。
-
-职责：
-
-- 用户认证
-- JWT 鉴权
-- RESTful API
-- 参数校验
-- 统一响应
-- 文件上传入口
-- SSE 任务进度推送
-- 调用内部 gRPC 服务
-
-### BookmarkService
-
-负责收藏核心业务。
-
-职责：
-
-- 创建收藏
-- 查询收藏
-- 修改收藏
-- 删除收藏
-- 阅读状态管理
-- 标签绑定
-- 集合绑定
-
-### CrawlService
-
-负责网页抓取与正文提取。
-
-职责：
-
-- 抓取网页 HTML
-- 提取标题、描述、封面图
-- 提取正文
-- 生成内容 hash
-- 处理抓取失败
-
-### ArchiveService
-
-负责网页快照归档。
-
-职责：
-
-- 保存 HTML 快照
-- 保存正文快照
-- 保存截图 / PDF
-- 管理历史版本
-- 对接 MinIO
-
-### SearchService
-
-负责全文搜索。
-
-职责：
-
-- 建立索引
-- 更新索引
-- 删除索引
-- 关键词搜索
-- 标签和集合筛选
-
-### AIService
-
-负责 AI 内容整理。
-
-职责：
-
-- 生成摘要
-- 生成标签
-- 提取关键点
-- 生成知识卡片
-
-### WatchService
-
-负责网页变化监控。
-
-职责：
-
-- 定时抓取网页
-- 对比内容变化
-- 生成 diff
-- 触发通知
-
----
-
-## 项目结构
-
-```text
-linkmind/
-├── backend/
-│   ├── cmd/
-│   │   ├── api/
-│   │   ├── worker/
-│   │   ├── crawl-service/
-│   │   ├── archive-service/
-│   │   ├── search-service/
-│   │   └── ai-service/
-│   ├── api/
-│   │   └── proto/
-│   ├── internal/
-│   │   ├── config/
-│   │   ├── database/
-│   │   ├── model/
-│   │   ├── handler/
-│   │   ├── service/
-│   │   ├── grpc/
-│   │   ├── crawler/
-│   │   ├── archive/
-│   │   ├── search/
-│   │   ├── ai/
-│   │   ├── storage/
-│   │   ├── scheduler/
-│   │   └── middleware/
-│   ├── configs/
-│   ├── migrations/
-│   └── deployments/
-│
-├── web/
-│   ├── src/
-│   │   ├── api/
-│   │   ├── components/
-│   │   ├── views/
-│   │   ├── router/
-│   │   ├── stores/
-│   │   ├── types/
-│   │   └── utils/
-│   ├── package.json
-│   └── vite.config.ts
-│
-├── docker-compose.yml
-└── README.md
-```
-
----
-
-## API 示例
-
-### 用户认证
-
-```text
-POST /api/auth/register
-POST /api/auth/login
-GET  /api/user/profile
-```
-
-### 收藏管理
-
-```text
-POST   /api/bookmarks
-GET    /api/bookmarks
-GET    /api/bookmarks/:id
-PUT    /api/bookmarks/:id
-DELETE /api/bookmarks/:id
-```
-
-### 标签与集合
-
-```text
-GET    /api/tags
-POST   /api/tags
-GET    /api/collections
-POST   /api/collections
-```
-
-### 归档与快照
-
-```text
-POST /api/bookmarks/:id/archive
-GET  /api/bookmarks/:id/snapshots
-GET  /api/snapshots/:id
-```
-
-### AI 能力
-
-```text
-POST /api/bookmarks/:id/summarize
-POST /api/bookmarks/:id/generate-tags
-POST /api/bookmarks/:id/generate-cards
-```
-
-### 搜索
-
-```text
-GET /api/search?keyword=gin
-GET /api/search?tag=Go
-GET /api/search?collection=backend
-```
-
-### 网页监控
-
-```text
-POST /api/bookmarks/:id/watch
-GET  /api/bookmarks/:id/change-events
-```
-
----
 
 ## 快速开始
 
 ### 环境要求
 
-- Go 1.22+
-- Node.js 20+
+- Go 1.22 及以上
+- Node.js 20 及以上
 - Docker
 - Docker Compose
-- MySQL / PostgreSQL
+- MySQL 或 PostgreSQL
 - Redis
 - Meilisearch
 - MinIO
+
+### 克隆项目
+
+```bash
+git clone https://github.com/hllttz/linkmind.git
+cd linkmind
+```
 
 ### 启动基础服务
 
@@ -403,9 +205,7 @@ docker compose up -d mysql redis meilisearch minio
 
 ```bash
 cd backend
-
 go mod tidy
-
 go run ./cmd/api
 ```
 
@@ -413,211 +213,68 @@ go run ./cmd/api
 
 ```bash
 cd web
-
 npm install
-
 npm run dev
 ```
 
-### 生成 gRPC 代码
-
-```bash
-protoc \
-  --go_out=. \
-  --go-grpc_out=. \
-  api/proto/*.proto
-```
-
----
-
-## Docker Compose 部署
-
-第一版推荐使用 Docker Compose 单机部署。
+默认访问地址：
 
 ```text
-Nginx
- ├── /      -> Vue 静态资源
- └── /api   -> Gin API Gateway
-
-Gin API Gateway
- ├── gRPC -> CrawlService
- ├── gRPC -> ArchiveService
- ├── gRPC -> SearchService
- └── gRPC -> AIService
-
-MySQL / PostgreSQL
-Redis
-Meilisearch
-MinIO
+前端：http://localhost:5173
+后端：http://localhost:8080
 ```
 
----
-
-## 数据模型概览
-
-核心数据表包括：
-
-- users：用户表
-- bookmarks：收藏表
-- tags：标签表
-- collections：集合表
-- snapshots：快照表
-- notes：笔记表
-- highlights：高亮表
-- ai_summaries：AI 摘要表
-- knowledge_cards：知识卡片表
-- crawl_tasks：抓取任务表
-- watch_rules：网页监控规则表
-- notifications：通知表
-
----
-
-## 开发路线图
-
-### Phase 1：基础骨架
-
-- Gin 后端初始化
-- Vue 前端初始化
-- GORM 数据库连接
-- 用户注册登录
-- 收藏 CRUD
-- 最小 gRPC 调用链
-
-### Phase 2：网页抓取
-
-- URL 抓取
-- 标题和描述提取
-- 正文提取
-- 抓取任务记录
-- 前端展示抓取状态
-
-### Phase 3：网页归档
-
-- HTML 快照保存
-- 正文快照保存
-- MinIO 文件存储
-- 历史快照查询
-
-### Phase 4：搜索与标签
-
-- 接入 Meilisearch
-- 建立全文索引
-- 标签筛选
-- 集合筛选
-- 搜索结果排序
-
-### Phase 5：AI 摘要
-
-- 接入 DeepSeek / Ollama
-- 自动摘要
-- 自动标签
-- 关键点提取
-- 知识卡片生成
-
-### Phase 6：阅读器与笔记
-
-- Reader View
-- 阅读状态
-- 文本高亮
-- 阅读笔记
-- 星标收藏
-
-### Phase 7：网页变化监控
-
-- 监控规则
-- 定时抓取
-- 内容变化对比
-- 变化事件记录
-- 通知提醒
-
----
-
-## MVP 范围
-
-第一版建议只完成主链路。
-
-### 必须完成
-
-- 用户登录注册
-- 保存链接
-- 自动抓取标题和正文
-- 标签管理
-- 集合管理
-- 收藏列表
-- 收藏详情
-- 网页快照
-- 全文搜索
-- AI 摘要
-
-### 暂不实现
-
-- 浏览器插件
-- 移动端
-- 多人协作
-- SSO
-- 复杂权限
-- 向量检索
-- 复杂 RAG
-- OCR
-- PDF 深度解析
-- 网页变化监控
-
----
-
-## 后续扩展
-
-- 浏览器插件
-- RSS 自动导入
-- PDF 上传与解析
-- 图片 OCR
-- 网页变化监控
-- 向量检索
-- AI 问答
-- 多人协作集合
-- 资料包导出
-- 移动端适配
-- Webhook 通知
-- GitHub 仓库自动解析
-- Chrome / Pocket / Linkwarden / Karakeep 数据导入
-
----
-
-## 项目亮点
-
-- Gin + GORM 实现清晰的后端 API 服务
-- gRPC 拆分抓取、归档、搜索、AI 等内部服务
-- 支持网页正文提取和快照归档
-- 使用 Meilisearch 实现全文搜索
-- 使用 MinIO 存储网页归档文件
-- 支持 AI 摘要、自动标签和知识卡片生成
-- 支持阅读器、高亮笔记和稍后读状态管理
-- 后续可扩展网页变化监控、RSS 导入和浏览器插件
-
----
-
-## 项目命名
-
-当前推荐名称：
+## 项目结构
 
 ```text
-LinkMind
+linkmind/
+├── backend/
+│   ├── cmd/
+│   ├── api/
+│   ├── internal/
+│   ├── configs/
+│   ├── migrations/
+│   └── deployments/
+├── web/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.ts
+├── docker-compose.yml
+└── README.md
 ```
 
-含义：
+其中：
 
-> 链接管理 + 知识沉淀 + 智能整理。
+- backend 负责后端服务
+- web 负责前端页面
+- api 目录存放接口定义
+- internal 目录存放后端内部实现
+- deployments 目录存放部署相关文件
 
-其他备选：
+## 项目灵感
 
-- LinkVault
-- ArchiveMind
-- WebShelf
-- ReadNest
-- PageKeeper
-- KnowledgeVault
+LinkMind 参考了以下自托管书签和网页归档项目的产品方向：
 
----
+- Karakeep
+- Linkwarden
+- Wallabag
+- Shiori
+- Memos
 
-## License
+LinkMind 更关注学生和开发者的学习资料整理场景，强调技术资料保存、全文检索、摘要整理和长期知识沉淀。
+
+## 参与贡献
+
+欢迎提交问题、建议和代码改进。
+
+提交代码前请确保：
+
+- 代码已格式化
+- 测试能够通过
+- 没有混入无关改动
+- 新功能有必要说明
+- 大型改动先进行讨论
+
+## 许可证
 
 MIT License
